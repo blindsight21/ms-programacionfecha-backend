@@ -10,7 +10,7 @@
     </parent>
     <groupId>pe.gob.mimp</groupId>
     <artifactId>ms-programacionfecha-backend</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <name>ms-programacionfecha-backend</name>
     <description>microservicio para el modulo programacion fecha</description>
 
