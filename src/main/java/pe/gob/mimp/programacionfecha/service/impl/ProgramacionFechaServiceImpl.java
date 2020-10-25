@@ -35,17 +35,7 @@ public class ProgramacionFechaServiceImpl implements ProgramacionFechaService {
     @Override
     public void crearProgramacionFecha(ProgramacionFechaBean programacionFechaBean) throws Exception {
 
-        ProgramacionFecha programacionFecha = new ProgramacionFecha();
-        programacionFecha.setTxtAnio(programacionFechaBean.getTxtAnio());
-        programacionFecha.setNumTrimestre(programacionFechaBean.getNumTrimestre());
-        programacionFecha.setFecInicio(programacionFechaBean.getFecInicio());
-        programacionFecha.setFecFin(programacionFechaBean.getFecFin());
-        programacionFecha.setNidTipoActividad(programacionFechaBean.getNidTipoActividad());
-        programacionFecha.setNidUsuario(programacionFechaBean.getNidUsuario());
-        programacionFecha.setTxtPc(programacionFechaBean.getTxtPc());
-        programacionFecha.setTxtIp(programacionFechaBean.getTxtIp());
-        programacionFecha.setFecEdicion(programacionFechaBean.getFecEdicion());
-        programacionFecha.setFlgActivo(programacionFechaBean.getFlgActivo());
+        ProgramacionFecha programacionFecha = ProgramacionFechaCast.castProgramacionFechaBeanToProgramacionFecha(programacionFechaBean);
 
         programacionFechaRepository.save(programacionFecha);
 
@@ -54,19 +44,7 @@ public class ProgramacionFechaServiceImpl implements ProgramacionFechaService {
     @Override
     public void editarProgramacionFecha(ProgramacionFechaBean programacionFechaBean) {
 
-        ProgramacionFecha programacionFecha = new ProgramacionFecha();
-
-        programacionFecha.setNidProgramacionFecha(programacionFechaBean.getNidProgramacionFecha());
-        programacionFecha.setTxtAnio(programacionFechaBean.getTxtAnio());
-        programacionFecha.setNumTrimestre(programacionFechaBean.getNumTrimestre());
-        programacionFecha.setFecInicio(programacionFechaBean.getFecInicio());
-        programacionFecha.setFecFin(programacionFechaBean.getFecFin());
-        programacionFecha.setNidTipoActividad(programacionFechaBean.getNidTipoActividad());
-        programacionFecha.setNidUsuario(programacionFechaBean.getNidUsuario());
-        programacionFecha.setTxtPc(programacionFechaBean.getTxtPc());
-        programacionFecha.setTxtIp(programacionFechaBean.getTxtIp());
-        programacionFecha.setFecEdicion(programacionFechaBean.getFecEdicion());
-        programacionFecha.setFlgActivo(programacionFechaBean.getFlgActivo());
+        ProgramacionFecha programacionFecha = ProgramacionFechaCast.castProgramacionFechaBeanToProgramacionFecha(programacionFechaBean);
 
         programacionFechaRepository.save(programacionFecha);
 
@@ -95,19 +73,7 @@ public class ProgramacionFechaServiceImpl implements ProgramacionFechaService {
         if (!Util.esListaVacia(programacionFechaList)) {
 
             return programacionFechaList.stream().map(programacionFecha -> {
-                ProgramacionFechaBean programacionFechaBean = new ProgramacionFechaBean();
-                programacionFechaBean.setNidProgramacionFecha(programacionFecha.getNidProgramacionFecha());
-                programacionFecha.setTxtAnio(programacionFechaBean.getTxtAnio());
-                programacionFecha.setNumTrimestre(programacionFechaBean.getNumTrimestre());
-                programacionFecha.setFecInicio(programacionFechaBean.getFecInicio());
-                programacionFecha.setFecFin(programacionFechaBean.getFecFin());
-                programacionFecha.setNidTipoActividad(programacionFechaBean.getNidTipoActividad());
-                programacionFechaBean.setNidUsuario(programacionFecha.getNidUsuario());
-                programacionFechaBean.setTxtPc(programacionFecha.getTxtPc());
-                programacionFechaBean.setTxtIp(programacionFecha.getTxtIp());
-                programacionFechaBean.setFecEdicion(programacionFecha.getFecEdicion());
-                programacionFechaBean.setFlgActivo(programacionFecha.getFlgActivo());
-                return programacionFechaBean;
+                return ProgramacionFechaCast.castProgramacionFechaToProgramacionFechaBean(programacionFecha);
             }).collect(Collectors.toList());
         }
 
